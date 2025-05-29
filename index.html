@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árvore Genealógica</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Árvore Genealógica</h1>
+        <p>Crie sua árvore genealógica de forma simples e rápida</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <div class="form-container">
+                    <h2>Adicionar Pessoa</h2>
+                    <form id="personForm">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Gênero:</label>
+                            <select id="gender">
+                                <option value="male">Masculino</option>
+                                <option value="female">Feminino</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthDate">Data de Nascimento (opcional):</label>
+                            <input type="date" id="birthDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deathDate">Data de Falecimento (opcional):</label>
+                            <input type="date" id="deathDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="relation">Relação:</label>
+                            <select id="relation">
+                                <option value="root">Pessoa Inicial</option>
+                                <option value="parent">Pai/Mãe de</option>
+                                <option value="child">Filho(a) de</option>
+                                <option value="spouse">Cônjuge de</option>
+                                <option value="sibling">Irmão/Irmã de</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="relatedToGroup">
+                            <label for="relatedTo">Relacionado a:</label>
+                            <select id="relatedTo">
+                                <option value="">Selecione uma pessoa</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Adicionar</button>
+                    </form>
+                </div>
+                
+                <div class="data-source-toggle">
+                    <p>Fonte de dados para autocompletar:</p>
+                    <div class="toggle-container">
+                        <label class="toggle">
+                            <input type="checkbox" id="dataSourceToggle" checked>
+                            <span class="slider round"></span>
+                            <span class="toggle-label">Dados Reais</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button id="autoCompleteBtn" class="btn-primary"><i class="fas fa-magic"></i> Autocompletar Árvore</button>
+                    <button id="saveBtn" class="btn-secondary"><i class="fas fa-save"></i> Salvar Árvore</button>
+                    <button id="loadBtn" class="btn-secondary"><i class="fas fa-folder-open"></i> Carregar Árvore</button>
+                    <button id="exportPngBtn" class="btn-secondary"><i class="fas fa-image"></i> Exportar como PNG</button>
+                    <button id="clearBtn" class="btn-danger"><i class="fas fa-trash"></i> Limpar Tudo</button>
+                </div>
+            </div>
+            
+            <div class="tree-container">
+                <div id="tree-controls">
+                    <button id="zoomIn"><i class="fas fa-search-plus"></i></button>
+                    <button id="zoomOut"><i class="fas fa-search-minus"></i></button>
+                    <button id="resetZoom"><i class="fas fa-sync"></i></button>
+                </div>
+                <div id="tree-view"></div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Árvore Genealógica - Desenvolvido por Cascade AI - 2025</p>
+    </footer>
+
+    <!-- Modal para salvar/carregar -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Salvar Árvore</h2>
+            <div id="modal-body">
+                <p>Copie o código abaixo para salvar sua árvore:</p>
+                <textarea id="save-code" readonly></textarea>
+                <button id="copy-btn" class="btn-primary">Copiar</button>
+            </div>
+            <div id="load-body" style="display: none;">
+                <p>Cole o código da sua árvore salva:</p>
+                <textarea id="load-code"></textarea>
+                <button id="load-tree-btn" class="btn-primary">Carregar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
