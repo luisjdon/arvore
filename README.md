@@ -42,4 +42,4 @@ Uma aplicação web simples para criar e visualizar árvores genealógicas sem n
 
 ## Desenvolvido por
 
-Cascade AI - 2025
+Luis Alves
